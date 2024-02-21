@@ -1,0 +1,33 @@
+# Spring Boot configuration
+spring:
+  application:
+    name: POST-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/blogpost_23_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update # Automatically update the database schema based on the entity classes
+    properties:
+      hibernate:
+        show_sql: true # Enable SQL logging
+        format_sql: true # Format SQL queries for better readability
+        use_sql_comments: true # Add comments to SQL queries
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# Microservices configuration
+server:
+  port: 8081 # Port on which the microservice will run
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
